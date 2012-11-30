@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Example Application With Flask + Knockout.js</title>
+  </head>
+  <body>
+    <h3>Tasks</h3>
+    <form data-bind="submit: addTask">
+      <div>
+	Title: <input data-bind="value: newTaskTitle" placeholder="What's the title of the task?"/>
+      </div>
+      <div>
+	Description: <textarea data-bind="value: newTaskDesc" placeholder="What's the task?"></textarea>
+      </div>
+      <button type="submit">Add Task</button>
+    </form>
+    <ul data-bind="foreach: tasks, visible: tasks().length > 0">
+      <li>
+	<p data-bind="text: title"></p>
+	<p data-bind="text: description"></p>
+      </li>
+    </ul>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
